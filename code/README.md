@@ -16,61 +16,62 @@ Python 3.9+, standard library only for the engine. The API (`code/server.py`) ad
 `python3 -m uvicorn server:app --app-dir code --host 127.0.0.1 --port 8000`.
 No API keys are needed.
 
-## Walkthrough videos
+## Branch: bulk-agent
 
-- Bulk mode (upload `requests.csv` → queue → results → `output.csv`):
-  https://drive.google.com/file/d/1Ljn_cQ8_aPV7vxi02PmqUFL1njeSYVv5/view?usp=drive_link
-- Single request mode: https://drive.google.com/file/d/1kTGCqMux7tajK42MjOwbqcrkCBPiklNG/view?usp=drive_link
+This branch contains only the bulk-processing agent: the decision engine, the terminal batch runner, the queued bulk
+API and the evaluation workflow. The React Native app and the single-request endpoint are on `main`.
+
+Walkthrough of bulk mode (upload `requests.csv` → queue → results → `output.csv`):
+https://drive.google.com/file/d/1Ljn_cQ8_aPV7vxi02PmqUFL1njeSYVv5/view?usp=sharing
 
 ## Architecture
 
 The original whiteboard is in `docs/planning/buy_or_wait_flow.excalidraw`, summarised in `docs/planning/README.md`.
 
 ```text
-                React Native app (code/app)
-                           │
-                           ▼
-                 FastAPI server (code/server.py)
-                           │
-          ┌────────────────┴────────────────┐
-          ▼                                 ▼
-  Interactive mode                   Batch mode (CSV upload)
-  POST /api/v1/decision/evaluate     POST /api/v1/analysis/upload → start
-          │                                 │
-          ▼                                 ▼
-  Monthly-budget check               Job queue (asyncio.Queue)
-  (answers immediately)                     │
-                                            ▼
-                                     Background worker
-                                     (one row at a time)
-                                            │
-  python3 code/main.py ──────────────────►  ▼
-  (terminal batch runner)            Decision engine (code/engine)
-                                     DecisionEngine.evaluate_row
-                                            │
-                                            ▼
-                                        output.csv
+  requests.csv
+       │
+       ├──────────────────────────────┐
+       ▼                              ▼
+  python3 code/main.py          FastAPI (code/server.py)
+  (terminal batch runner)       POST /api/v1/analysis/upload → start
+       │                              │
+       │                              ▼
+       │                        Job queue (asyncio.Queue)
+       │                              │
+       │                              ▼
+       │                        Background worker (one row at a time)
+       │                              │
+       └──────────────┬───────────────┘
+                      ▼
+          Decision engine (code/engine)
+          DecisionEngine.evaluate_row
+                      │
+                      ▼
+                  output.csv
 ```
 
-### Interactive mode
+### Terminal batch runner
 
-The app sends one person's monthly profile and one purchase: salary, expenses, commitments, savings, minimum balance
-and the plan lengths they would consider. The server answers straight away with buy now, use a plan, or wait. That
-profile has no dated event history, so this mode uses a simple monthly-surplus check, not the 85-day forecast.
-It is the product's starting point; the challenge output does not use it.
+`python3 code/main.py` evaluates every request in `dataset/requests.csv` and writes `output.csv` at the repo root.
+That is how the submitted `output.csv` is produced.
 
-### Batch mode
+### Bulk API
 
-This is the Buy or Wait? challenge flow. When `requests.csv` is uploaded, the server checks its columns and creates a
-job. It then puts the job on a queue and returns right away. A background worker takes each row, evaluates it with
-the decision engine and records progress: queued, completed and failed rows. The app polls the job status, then
-shows the results with a one-line reason per row and lets you download `output.csv`. A row that fails is reported
-and does not stop the job.
+When a CSV is uploaded, the server checks its columns and creates a job. It then puts the job on a queue and
+returns right away. A background worker evaluates each row with the same engine and records progress: queued,
+completed and failed rows. A row that fails is reported and does not stop the job. The API gives identical rows to
+`main.py`.
 
-`python3 code/main.py` runs the same engine over every request directly from the terminal, without the server.
-That is how the submitted `output.csv` is produced. The upload flow and `main.py` give identical rows.
+```bash
+curl -F file=@dataset/requests.csv http://127.0.0.1:8000/api/v1/analysis/upload     # -> {"id": "job_…", …}
+curl -X POST http://127.0.0.1:8000/api/v1/analysis/start/<job_id>
+curl http://127.0.0.1:8000/api/v1/analysis/status/<job_id>                          # progress counts
+curl http://127.0.0.1:8000/api/v1/analysis/results/<job_id>                         # rows + one-line reason + summary
+curl -o output.csv http://127.0.0.1:8000/api/v1/analysis/download/<job_id>
+```
 
-The queue only decides *when* rows run; it contains no affordability logic. Every batch decision comes from
+The queue only decides *when* rows run; it contains no affordability logic. Every decision comes from
 `DecisionEngine.evaluate_row`, which reads profiles, events, exchange rates, payment options, messages and images
 from `dataset/`.
 
@@ -92,7 +93,7 @@ from `dataset/`.
    earliest start, fewest payments, lowest option id). If nothing is safe, try up to three stop/reduce changes on
    non-protected flexible expenses the user allows, choosing the smallest total cut.
 4. **Explanation**: one short sentence of the recommendation plus the protected minimum, in the style of the samples.
-   The API also returns a one-line `reason` (OK / OK with a plan / better wait / not OK) shown in the app.
+   The bulk results endpoint also returns a one-line `reason` (OK / OK with a plan / better wait / not OK).
 
 ## Calibration and known limits
 

@@ -41,7 +41,7 @@ Run the starter Python entry point with:
 python3 code/main.py
 ```
 
-Run the optional local API used by the Expo web bulk-analysis flow with:
+Run the optional bulk-analysis API (queue + background worker) with:
 
 ```bash
 python3 -m pip install -r code/requirements.txt

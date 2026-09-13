@@ -47,8 +47,7 @@ React Native app → Server ─┬─ single request → evaluate now
 
 ## How it became the submission
 
-The monthly model is what the app's interactive mode still uses (`POST /api/v1/decision/evaluate`).
-For the challenge, the "background analyzer" became the queued batch mode. The monthly arithmetic grew into the
-dated cash-flow forecast in `code/engine`. It covers recurring events, pending and scheduled items, exchange
-rates, messages and images, payment options, the minimum balance, spending changes and the earliest safe date.
-See `code/README.md` → Architecture.
+The "background analyzer" became the queued bulk mode on this branch. The monthly arithmetic grew into the dated
+cash-flow forecast in `code/engine`. It covers recurring events, pending and scheduled items, exchange rates,
+messages and images, payment options, the minimum balance, spending changes and the earliest safe date. The app and
+the single-request monthly check are on the `main` branch. See `code/README.md` → Architecture.

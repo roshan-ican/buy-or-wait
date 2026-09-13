@@ -1494,3 +1494,24 @@ branch=main
 repo_root=/Users/roshan/hackaton/hackerrank-orchestrate-september26
 worktree=main
 parent_agent=none
+
+## [2026-09-13T13:35:00+05:30] New bulk-agent branch without frontend
+
+User Prompt (verbatim, secrets redacted):
+and i want to have a new branch and kind of only have the agent that does the bulk processing
+(follow-up) and remove all the forntned code
+
+Agent Response Summary:
+Created branch bulk-agent from main. Removed the whole React Native frontend (code/app) and code.zip, stripped the single-request endpoint, its models and the browser CORS setup from server.py, leaving health plus the queued bulk endpoints. Rewrote the code/README.md architecture for bulk-only use with curl examples, and updated the planning note and root README wording. Verified: main.py gives an unchanged output.csv (0 violations, samples 23/24/23/22/22), and the real uvicorn queue processes all 250 rows identically. Pushed the branch to the private repo.
+
+Actions:
+* git switch -c bulk-agent; git rm -r code/app code.zip
+* Edited code/server.py, code/README.md, code/docs/planning/README.md, README.md, .gitignore
+* Ran evaluation/main.py and an end-to-end uvicorn bulk test; committed and pushed bulk-agent
+
+Context:
+tool=Claude Code
+branch=bulk-agent
+repo_root=/Users/roshan/hackaton/hackerrank-orchestrate-september26
+worktree=main
+parent_agent=none

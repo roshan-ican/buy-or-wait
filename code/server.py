@@ -1,3 +1,4 @@
+"""Bulk analysis API: upload requests.csv, queue it, and let a background worker evaluate each row."""
 from __future__ import annotations
 
 import asyncio
@@ -8,9 +9,7 @@ from contextlib import asynccontextmanager
 from typing import Any
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
-from pydantic import BaseModel, Field
 
 from engine.evaluator import OUTPUT_COLUMNS, default_engine
 from engine.planner import short_reason
@@ -52,35 +51,7 @@ async def lifespan(_: FastAPI):
     task.cancel()
 
 
-app = FastAPI(title="Buy or Wait API", version="1.0.0", lifespan=lifespan)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:8081", "http://127.0.0.1:8081"],
-    allow_credentials=False,
-    allow_methods=["GET", "POST"],
-    allow_headers=["*"],
-)
-
-
-class PersonalProfile(BaseModel):
-    monthly_salary: float = Field(gt=0)
-    other_monthly_income: float = Field(default=0, ge=0)
-    monthly_expenses: float = Field(ge=0)
-    monthly_commitments: float = Field(default=0, ge=0)
-    current_savings: float = Field(default=0, ge=0)
-    minimum_balance: float = Field(default=0, ge=0)
-
-
-class PersonalRequest(BaseModel):
-    item: str
-    price: float = Field(gt=0)
-    need_level: str = "want"
-    selected_plans: list[int] = [3, 6]
-
-
-class PersonalDecisionInput(BaseModel):
-    profile: PersonalProfile
-    request: PersonalRequest
+app = FastAPI(title="Buy or Wait bulk agent", version="1.0.0", lifespan=lifespan)
 
 
 @app.get("/api/v1/health")
@@ -88,42 +59,6 @@ def health():
     return {"status": "ok"}
 
 
-@app.post("/api/v1/decision/evaluate")
-def evaluate_personal(payload: PersonalDecisionInput):
-    profile = payload.profile
-    request = payload.request
-    income = profile.monthly_salary + profile.other_monthly_income
-    surplus = income - profile.monthly_expenses - profile.monthly_commitments
-    accessible_savings = max(0.0, profile.current_savings - profile.minimum_balance)
-    safe_now = max(0.0, surplus + accessible_savings)
-    percentage = request.price / profile.monthly_salary * 100
-    if request.price <= safe_now:
-        return {
-            "status": "buy_now", "headline": f"You can buy {request.item} now.",
-            "explanation": f"The payment leaves your protected balance intact and fits within {safe_now:,.2f} available this month.",
-            "monthlySurplus": surplus, "safeNow": safe_now, "salaryPercentage": percentage,
-            "recommendedMonths": None, "monthlyPayment": None, "earliestMonths": 0,
-        }
-    eligible = [(months, request.price / months) for months in sorted(set(request.selected_plans)) if months > 1 and request.price / months <= surplus]
-    if eligible:
-        months, payment = eligible[0]
-        return {
-            "status": "use_plan", "headline": f"Buy it with the {months}-month plan.",
-            "explanation": f"A {payment:,.2f} monthly payment fits within your {surplus:,.2f} monthly surplus.",
-            "monthlySurplus": surplus, "safeNow": safe_now, "salaryPercentage": percentage,
-            "recommendedMonths": months, "monthlyPayment": payment,
-            "earliestMonths": max(1, int((request.price - accessible_savings + max(surplus, 1) - 1) // max(surplus, 1))),
-        }
-    earliest = None if surplus <= 0 else max(1, int((request.price - accessible_savings + surplus - 1) // surplus))
-    return {
-        "status": "wait", "headline": "Wait before buying this.",
-        "explanation": "The available plans exceed your monthly surplus and would put your protected balance at risk.",
-        "monthlySurplus": surplus, "safeNow": safe_now, "salaryPercentage": percentage,
-        "recommendedMonths": None, "monthlyPayment": None, "earliestMonths": earliest,
-    }
-
-# The Main API for bulk analysis but the entire flow is the same as for the personal API
-# the only catch is that we use a different dataset and queue based process for each job
 @app.post("/api/v1/analysis/upload")
 async def upload(file: UploadFile = File(...)):
     if not file.filename or not file.filename.lower().endswith(".csv"):
