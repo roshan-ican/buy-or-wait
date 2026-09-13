@@ -58,6 +58,26 @@ def long_date(day: date) -> str:
     return f"{day.day} {day.strftime('%B')} {day.year}"
 
 
+def short_reason(result: dict[str, str], currency: str, minimum: str) -> str:
+    """One-line 'why' for a decision row, derived only from the decision fields."""
+    status = result["affordability_status"]
+    method = result["recommended_payment_method"]
+    earliest = result["earliest_date_for_full_payment"]
+    floor = f"{currency} {money(Decimal(minimum))}"
+    if status == "affordable_now":
+        return f"OK: paying today still keeps your {floor} minimum."
+    if status == "affordable_later":
+        return f"Better wait: a full payment is only safe from {long_date(date.fromisoformat(earliest))}."
+    if status == "not_affordable":
+        return f"Not OK: no option keeps your {floor} minimum within the forecast."
+    if result["spending_changes_needed"] != "none":
+        count = len(result["spending_changes_needed"].split("|"))
+        return f"OK with changes: cut {count} flexible expense{'s' if count > 1 else ''} first to protect {floor}."
+    if method == "partial_payment":
+        return f"OK in two parts: only {currency} {money(Decimal(result['amount_safe_to_pay']))} is safe today."
+    return f"OK with a plan: one payment breaks your {floor} minimum, installments do not."
+
+
 class Planner:
     def __init__(self, request: dict, profile: dict, options: list[dict], forecast: Forecast):
         self.request = request

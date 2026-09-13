@@ -30,7 +30,7 @@ All decisions come from the deterministic engine in `code/engine/`.
 The one-time image review happened inside the development chat session; it is not billed to the evaluation run
 and has no separate API usage record.
 
-## Gemini on this branch (bulk-agent)
+## Gemini (optional fallback and cross-check)
 
 Gemini (`gemini-3.1-flash-lite`, Google AI Studio free tier) is used in two ways. Neither changes the `output.csv`
 above, which still makes **0 model calls**.
