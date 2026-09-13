@@ -11,7 +11,15 @@ python3 code/evaluation/validate_output.py     # checks every hard rule in probl
 python3 code/evaluation/score_samples.py --verbose   # accuracy vs the public labels in sample_requests.csv
 ```
 
-Python 3.9+, standard library only. No dependencies to install and no API keys.
+Python 3.9+, standard library only; no dependencies to install.
+
+Optional Gemini support: put `GEMINI_API_KEY=...` in a repo-root `.env` (gitignored) or the environment.
+`GEMINI_MODEL` overrides the default `gemini-3.1-flash-lite`, and `GEMINI_DISABLED=1` turns it off.
+
+```bash
+python3 code/evaluation/main.py --gemini       # adds step 4: Gemini cross-check of every message and image
+python3 code/evaluation/gemini_crosscheck.py   # the cross-check on its own
+```
 
 ## Branch: bulk-agent
 
@@ -29,14 +37,18 @@ dataset/requests.csv ─► code/main.py ─► DecisionEngine.evaluate_row (cod
 | `code/main.py` | Evaluates every request in `dataset/requests.csv` and writes `output.csv` at the repo root |
 | `code/engine/` | The decision engine: evidence (`facts.py`, `images.py`), `forecast.py`, `planner.py`, `evaluator.py` |
 | `code/evaluation/main.py` | One-command workflow: run, validate, score |
-| `code/evaluation/usage_report.md` | Token usage for the final run (0 model calls) |
+| `code/engine/gemini.py` | Gemini client: JSON-schema answers, disk cache, token accounting |
+| `code/evaluation/gemini_crosscheck.py` | Gemini reads all messages and images; disagreements go to `gemini_crosscheck.json` |
+| `code/evaluation/usage_report.md` | Token usage: final run (0 calls) and the Gemini cross-check |
 
 The React Native app, the API server and the planning docs are on the `main` branch.
 
 ## How a decision is made
 
-1. **Evidence** (`engine/facts.py`, `engine/images.py`): messages become typed facts; blank event amounts come from the
-   reviewed image cache, used only when the image file's SHA-256 matches; any other image goes to on-device OCR. Message text never overrides the rules.
+1. **Evidence** (`engine/facts.py`, `engine/images.py`): phrase rules turn messages into typed facts; a message no
+   rule recognises is labelled by Gemini, which can only choose one of the same fact kinds. Blank event amounts come
+   from the reviewed image cache (used only when the image's SHA-256 matches), else Gemini vision, else on-device OCR.
+   Message and image text never overrides the rules.
 2. **Forecast** (`engine/forecast.py`): starting from `current_available_balance`, build day-by-day cash flow:
    - recurring expenses detected from settled history (weekly / N-day / monthly by scheduled day), one-off outliers removed,
      amounts = average of history; failed debits consume their billing period unless a message says the bill is still due;

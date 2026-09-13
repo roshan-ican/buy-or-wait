@@ -24,7 +24,7 @@ class Dataset:
         for message in self.messages:
             self.facts_by_user[message["user_id"]].append(interpret(message))
         self.images = self._read("images.csv")
-        self.image_amounts = resolve_image_amounts(dataset_dir, self.images)
+        self.image_amounts = resolve_image_amounts(dataset_dir, self.images, self.events_by_id)
         self.rates: dict[tuple[str, str], list[tuple[date, Decimal]]] = defaultdict(list)
         for row in self._read("exchange_rates.csv"):
             self.rates[(row["from_currency"], row["to_currency"])].append(

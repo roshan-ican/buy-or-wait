@@ -1,0 +1,24 @@
+{
+  "task": "image",
+  "model": "gemini-3.1-flash-lite",
+  "result": {
+    "amount": "3650.00",
+    "label": "Amount Payable"
+  },
+  "usage": {
+    "promptTokenCount": 1144,
+    "candidatesTokenCount": 26,
+    "totalTokenCount": 1170,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 80
+      },
+      {
+        "modality": "IMAGE",
+        "tokenCount": 1064
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

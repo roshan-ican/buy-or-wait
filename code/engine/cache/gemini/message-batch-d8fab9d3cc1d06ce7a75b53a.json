@@ -1,0 +1,145 @@
+{
+  "task": "message-batch",
+  "model": "gemini-3.1-flash-lite",
+  "result": [
+    {
+      "index": 0,
+      "kind": "salary_increase",
+      "amount": "627",
+      "currency": "EUR",
+      "effective_date": "2026-07-15"
+    },
+    {
+      "index": 1,
+      "kind": "refund_pending"
+    },
+    {
+      "index": 2,
+      "kind": "temporary_pay",
+      "amount": "1750.32",
+      "currency": "EUR"
+    },
+    {
+      "index": 3,
+      "kind": "salary_date_change",
+      "effective_date": "2025-08-23"
+    },
+    {
+      "index": 4,
+      "kind": "next_salary_reduced",
+      "amount": "1222.65",
+      "currency": "EUR"
+    },
+    {
+      "index": 5,
+      "kind": "first_salary",
+      "amount": "38190000",
+      "currency": "IDR",
+      "effective_date": "2025-11-15"
+    },
+    {
+      "index": 6,
+      "kind": "dispute_pending"
+    },
+    {
+      "index": 7,
+      "kind": "gig_payout_pending"
+    },
+    {
+      "index": 8,
+      "kind": "bonus_pending"
+    },
+    {
+      "index": 9,
+      "kind": "contract_ended"
+    },
+    {
+      "index": 10,
+      "kind": "separate_card_minimums"
+    },
+    {
+      "index": 11,
+      "kind": "first_salary",
+      "amount": "2024",
+      "currency": "EUR",
+      "effective_date": "2026-01-15"
+    },
+    {
+      "index": 12,
+      "kind": "unrealized_value"
+    },
+    {
+      "index": 13,
+      "kind": "dispute_pending"
+    },
+    {
+      "index": 14,
+      "kind": "salary_date_change",
+      "effective_date": "2025-02-23"
+    },
+    {
+      "index": 15,
+      "kind": "contract_ended"
+    },
+    {
+      "index": 16,
+      "kind": "refund_pending"
+    },
+    {
+      "index": 17,
+      "kind": "gig_payout_pending"
+    },
+    {
+      "index": 18,
+      "kind": "salary_increase",
+      "amount": "2424",
+      "currency": "USD",
+      "effective_date": "2026-07-15"
+    },
+    {
+      "index": 19,
+      "kind": "salary_resumes",
+      "amount": "1914",
+      "currency": "EUR",
+      "effective_date": "2026-04-15"
+    },
+    {
+      "index": 20,
+      "kind": "temporary_pay",
+      "amount": "1346.40",
+      "currency": "EUR"
+    },
+    {
+      "index": 21,
+      "kind": "refund_pending"
+    },
+    {
+      "index": 22,
+      "kind": "invoice_approved",
+      "amount": "35200",
+      "currency": "ZAR",
+      "effective_date": "2026-01-15"
+    },
+    {
+      "index": 23,
+      "kind": "reimbursement_one_off"
+    },
+    {
+      "index": 24,
+      "kind": "rent_increase",
+      "percent": "12"
+    }
+  ],
+  "usage": {
+    "promptTokenCount": 2225,
+    "candidatesTokenCount": 989,
+    "totalTokenCount": 3214,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2225
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

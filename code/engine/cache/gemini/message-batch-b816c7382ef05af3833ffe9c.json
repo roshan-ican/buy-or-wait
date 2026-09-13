@@ -1,0 +1,243 @@
+{
+  "task": "message-batch",
+  "model": "gemini-3.1-flash-lite",
+  "result": [
+    {
+      "index": 0,
+      "kind": "rent_increase",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": "12",
+      "second_amount": null
+    },
+    {
+      "index": 1,
+      "kind": "unrealized_value",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 2,
+      "kind": "foreign_salary_confirmed",
+      "amount": "696",
+      "currency": "USD",
+      "effective_date": "2025-05-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 3,
+      "kind": "first_salary",
+      "amount": "18700",
+      "currency": "ZAR",
+      "effective_date": "2026-07-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 4,
+      "kind": "rent_increase",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": "12",
+      "second_amount": null
+    },
+    {
+      "index": 5,
+      "kind": "invoice_approved",
+      "amount": "26180",
+      "currency": "ZAR",
+      "effective_date": "2025-08-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 6,
+      "kind": "employment_ended",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 7,
+      "kind": "base_salary_only",
+      "amount": "3072",
+      "currency": "USD",
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 8,
+      "kind": "refund_pending",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 9,
+      "kind": "base_salary_only",
+      "amount": "158000",
+      "currency": "INR",
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 10,
+      "kind": "rent_increase",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": "12",
+      "second_amount": null
+    },
+    {
+      "index": 11,
+      "kind": "regular_salary_with_arrears",
+      "amount": "1752",
+      "currency": "USD",
+      "effective_date": null,
+      "percent": null,
+      "second_amount": "788.40"
+    },
+    {
+      "index": 12,
+      "kind": "salary_resumes",
+      "amount": "62000",
+      "currency": "INR",
+      "effective_date": "2025-05-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 13,
+      "kind": "receipt_final_amount",
+      "amount": null,
+      "currency": "INR",
+      "effective_date": "2026-04-03",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 14,
+      "kind": "temporary_pay",
+      "amount": "8618400",
+      "currency": "IDR",
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 15,
+      "kind": "salary_resumes",
+      "amount": "251000",
+      "currency": "INR",
+      "effective_date": "2026-01-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 16,
+      "kind": "untrusted_instruction",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 17,
+      "kind": "invoice_approved",
+      "amount": "13420",
+      "currency": "ZAR",
+      "effective_date": "2026-07-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 18,
+      "kind": "failed_debit_outstanding",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 19,
+      "kind": "base_salary_only",
+      "amount": "49280",
+      "currency": "ZAR",
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 20,
+      "kind": "prize_pending",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 21,
+      "kind": "invoice_approved",
+      "amount": "924",
+      "currency": "EUR",
+      "effective_date": "2024-12-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 22,
+      "kind": "salary_date_change",
+      "amount": null,
+      "currency": null,
+      "effective_date": "2025-05-23",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 23,
+      "kind": "foreign_salary_confirmed",
+      "amount": "1804",
+      "currency": "EUR",
+      "effective_date": "2025-08-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 24,
+      "kind": "prize_received",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    }
+  ],
+  "usage": {
+    "promptTokenCount": 2200,
+    "candidatesTokenCount": 1789,
+    "totalTokenCount": 3989,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2200
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

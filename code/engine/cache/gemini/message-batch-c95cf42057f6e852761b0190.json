@@ -1,0 +1,89 @@
+{
+  "task": "message-batch",
+  "model": "gemini-3.1-flash-lite",
+  "result": [
+    {
+      "index": 0,
+      "kind": "failed_debit_outstanding"
+    },
+    {
+      "index": 1,
+      "kind": "internal_transfer"
+    },
+    {
+      "index": 2,
+      "kind": "household_income_ended",
+      "amount": "48260000",
+      "currency": "IDR"
+    },
+    {
+      "index": 3,
+      "kind": "foreign_salary_confirmed",
+      "amount": "1485",
+      "currency": "EUR",
+      "effective_date": "2025-05-15"
+    },
+    {
+      "index": 4,
+      "kind": "unrealized_value"
+    },
+    {
+      "index": 5,
+      "kind": "contract_ended"
+    },
+    {
+      "index": 6,
+      "kind": "unrealized_value"
+    },
+    {
+      "index": 7,
+      "kind": "foreign_currency_charge"
+    },
+    {
+      "index": 8,
+      "kind": "prize_pending"
+    },
+    {
+      "index": 9,
+      "kind": "first_salary",
+      "amount": "38280",
+      "currency": "ZAR",
+      "effective_date": "2025-11-15"
+    },
+    {
+      "index": 10,
+      "kind": "regular_salary_with_arrears",
+      "amount": "103000",
+      "currency": "INR",
+      "second_amount": "46350"
+    },
+    {
+      "index": 11,
+      "kind": "bonus_pending"
+    },
+    {
+      "index": 12,
+      "kind": "internal_transfer"
+    },
+    {
+      "index": 13,
+      "kind": "refund_pending"
+    },
+    {
+      "index": 14,
+      "kind": "refund_pending"
+    }
+  ],
+  "usage": {
+    "promptTokenCount": 1553,
+    "candidatesTokenCount": 523,
+    "totalTokenCount": 2076,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1553
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

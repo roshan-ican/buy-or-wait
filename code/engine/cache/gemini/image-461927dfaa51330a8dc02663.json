@@ -1,0 +1,24 @@
+{
+  "task": "image",
+  "model": "gemini-3.1-flash-lite",
+  "result": {
+    "amount": "393.22",
+    "label": "Total"
+  },
+  "usage": {
+    "promptTokenCount": 1173,
+    "candidatesTokenCount": 24,
+    "totalTokenCount": 1197,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 81
+      },
+      {
+        "modality": "IMAGE",
+        "tokenCount": 1092
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

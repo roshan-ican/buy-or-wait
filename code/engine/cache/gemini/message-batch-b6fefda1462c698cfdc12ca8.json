@@ -1,0 +1,153 @@
+{
+  "task": "message-batch",
+  "model": "gemini-3.1-flash-lite",
+  "result": [
+    {
+      "index": 0,
+      "kind": "salary_increase",
+      "amount": "29070000",
+      "currency": "IDR",
+      "effective_date": "2026-07-15"
+    },
+    {
+      "index": 1,
+      "kind": "regular_salary_with_arrears",
+      "amount": "30400000",
+      "currency": "IDR",
+      "second_amount": "13680000"
+    },
+    {
+      "index": 2,
+      "kind": "base_salary_only",
+      "amount": "44270000",
+      "currency": "IDR"
+    },
+    {
+      "index": 3,
+      "kind": "employment_ended"
+    },
+    {
+      "index": 4,
+      "kind": "invoice_approved",
+      "amount": "2340",
+      "currency": "USD",
+      "effective_date": "2024-12-15"
+    },
+    {
+      "index": 5,
+      "kind": "salary_date_change",
+      "effective_date": "2025-05-23"
+    },
+    {
+      "index": 6,
+      "kind": "next_salary_reduced",
+      "amount": "137150",
+      "currency": "INR"
+    },
+    {
+      "index": 7,
+      "kind": "refund_pending"
+    },
+    {
+      "index": 8,
+      "kind": "prize_pending"
+    },
+    {
+      "index": 9,
+      "kind": "internal_transfer"
+    },
+    {
+      "index": 10,
+      "kind": "separate_card_minimums"
+    },
+    {
+      "index": 11,
+      "kind": "foreign_salary_confirmed",
+      "amount": "1284",
+      "currency": "USD",
+      "effective_date": "2025-11-15"
+    },
+    {
+      "index": 12,
+      "kind": "temporary_pay",
+      "amount": "1924.56",
+      "currency": "EUR"
+    },
+    {
+      "index": 13,
+      "kind": "base_salary_only",
+      "amount": "847",
+      "currency": "EUR"
+    },
+    {
+      "index": 14,
+      "kind": "next_salary_reduced",
+      "amount": "1731.60",
+      "currency": "USD"
+    },
+    {
+      "index": 15,
+      "kind": "invoice_approved",
+      "amount": "2376",
+      "currency": "EUR",
+      "effective_date": "2024-12-15"
+    },
+    {
+      "index": 16,
+      "kind": "untrusted_instruction"
+    },
+    {
+      "index": 17,
+      "kind": "first_salary",
+      "amount": "59000",
+      "currency": "INR",
+      "effective_date": "2026-07-15"
+    },
+    {
+      "index": 18,
+      "kind": "bonus_pending"
+    },
+    {
+      "index": 19,
+      "kind": "foreign_currency_charge"
+    },
+    {
+      "index": 20,
+      "kind": "refund_pending"
+    },
+    {
+      "index": 21,
+      "kind": "rent_increase",
+      "percent": "12"
+    },
+    {
+      "index": 22,
+      "kind": "next_salary_reduced",
+      "amount": "31889",
+      "currency": "ZAR"
+    },
+    {
+      "index": 23,
+      "kind": "first_salary",
+      "amount": "145000",
+      "currency": "INR",
+      "effective_date": "2024-09-15"
+    },
+    {
+      "index": 24,
+      "kind": "reimbursement_one_off"
+    }
+  ],
+  "usage": {
+    "promptTokenCount": 2254,
+    "candidatesTokenCount": 1080,
+    "totalTokenCount": 3334,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2254
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

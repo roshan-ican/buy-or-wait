@@ -1,0 +1,128 @@
+{
+  "summary": {
+    "messages": {
+      "total": 215,
+      "agree": 214
+    },
+    "images": {
+      "total": 16,
+      "agree": 15
+    },
+    "usage": {
+      "model": "gemini-3.1-flash-lite",
+      "calls": 0,
+      "cache_hits": 25,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "calls_by_task": {}
+    }
+  },
+  "message_disagreements": [
+    {
+      "message_id": "message_02",
+      "rules": "regular_salary_confirmed",
+      "gemini": "regular_salary_with_arrears",
+      "agree": false,
+      "text": "Tim payroll BrightPath Media telah mengirim pembaruan. Gaji rutin untuk penggajian berikutnya sudah dikonfirmasi. Slip gaji berikutnya akan menampilkan gaji rut"
+    }
+  ],
+  "images": [
+    {
+      "image_id": "image_01",
+      "reviewed": "4365000",
+      "gemini": "4365000",
+      "agree": true
+    },
+    {
+      "image_id": "image_02",
+      "reviewed": "100000",
+      "gemini": "100000.00",
+      "agree": true
+    },
+    {
+      "image_id": "image_03",
+      "reviewed": "41272",
+      "gemini": "41272.00",
+      "agree": true
+    },
+    {
+      "image_id": "image_04",
+      "reviewed": "2854",
+      "gemini": "2854.00",
+      "agree": true
+    },
+    {
+      "image_id": "image_05",
+      "reviewed": "704.05",
+      "gemini": "704.05",
+      "agree": true
+    },
+    {
+      "image_id": "image_06",
+      "reviewed": "1995",
+      "gemini": "1995.00",
+      "agree": true
+    },
+    {
+      "image_id": "image_07",
+      "reviewed": "8528",
+      "gemini": "8528.10",
+      "agree": false
+    },
+    {
+      "image_id": "image_08",
+      "reviewed": "15339",
+      "gemini": "15339.00",
+      "agree": true
+    },
+    {
+      "image_id": "image_09",
+      "reviewed": "723",
+      "gemini": "723.00",
+      "agree": true
+    },
+    {
+      "image_id": "image_10",
+      "reviewed": "79679.26",
+      "gemini": "79679.26",
+      "agree": true
+    },
+    {
+      "image_id": "image_11",
+      "reviewed": "3650",
+      "gemini": "3650.00",
+      "agree": true
+    },
+    {
+      "image_id": "image_12",
+      "reviewed": "33.50",
+      "gemini": "33.50",
+      "agree": true
+    },
+    {
+      "image_id": "image_13",
+      "reviewed": "2298",
+      "gemini": "2298",
+      "agree": true
+    },
+    {
+      "image_id": "image_14",
+      "reviewed": "4543",
+      "gemini": "4543.00",
+      "agree": true
+    },
+    {
+      "image_id": "image_15",
+      "reviewed": "9968",
+      "gemini": "9968.00",
+      "agree": true
+    },
+    {
+      "image_id": "image_16",
+      "reviewed": "393.22",
+      "gemini": "393.22",
+      "agree": true
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "task": "message-batch",
+  "model": "gemini-3.1-flash-lite",
+  "result": [
+    {
+      "index": 0,
+      "kind": "regular_salary_with_arrears",
+      "amount": "260000",
+      "currency": "INR",
+      "effective_date": null,
+      "percent": null,
+      "second_amount": "117000"
+    },
+    {
+      "index": 1,
+      "kind": "bonus_pending",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 2,
+      "kind": "first_salary",
+      "amount": "30400000",
+      "currency": "IDR",
+      "effective_date": "2026-04-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 3,
+      "kind": "failed_debit_outstanding",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 4,
+      "kind": "household_income_ended",
+      "amount": "2827",
+      "currency": "EUR",
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 5,
+      "kind": "first_salary",
+      "amount": "2772",
+      "currency": "EUR",
+      "effective_date": "2024-06-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 6,
+      "kind": "first_salary",
+      "amount": "16910000",
+      "currency": "IDR",
+      "effective_date": "2025-11-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 7,
+      "kind": "dispute_pending",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 8,
+      "kind": "refund_pending",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 9,
+      "kind": "unrealized_value",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 10,
+      "kind": "contract_ended",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 11,
+      "kind": "household_income_ended",
+      "amount": "912",
+      "currency": "USD",
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 12,
+      "kind": "first_salary",
+      "amount": "62000",
+      "currency": "INR",
+      "effective_date": "2026-01-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 13,
+      "kind": "contract_ended",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 14,
+      "kind": "first_salary",
+      "amount": "968",
+      "currency": "EUR",
+      "effective_date": "2025-08-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 15,
+      "kind": "foreign_salary_confirmed",
+      "amount": "1680",
+      "currency": "USD",
+      "effective_date": "2025-11-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 16,
+      "kind": "employment_ended",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 17,
+      "kind": "temporary_pay",
+      "amount": "1528.56",
+      "currency": "EUR",
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 18,
+      "kind": "base_salary_only",
+      "amount": "1548",
+      "currency": "USD",
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 19,
+      "kind": "next_salary_reduced",
+      "amount": "702",
+      "currency": "USD",
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 20,
+      "kind": "first_salary",
+      "amount": "53680",
+      "currency": "ZAR",
+      "effective_date": "2024-12-15",
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 21,
+      "kind": "dispute_pending",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 22,
+      "kind": "failed_debit_outstanding",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 23,
+      "kind": "bonus_pending",
+      "amount": null,
+      "currency": null,
+      "effective_date": null,
+      "percent": null,
+      "second_amount": null
+    },
+    {
+      "index": 24,
+      "kind": "first_salary",
+      "amount": "214000",
+      "currency": "INR",
+      "effective_date": "2024-06-15",
+      "percent": null,
+      "second_amount": null
+    }
+  ],
+  "usage": {
+    "promptTokenCount": 2196,
+    "candidatesTokenCount": 1768,
+    "totalTokenCount": 3964,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2196
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

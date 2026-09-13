@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
+from engine import gemini
 from engine.evaluator import OUTPUT_COLUMNS, default_engine
 
 
@@ -21,6 +22,9 @@ def run() -> Path:
         writer.writeheader()
         writer.writerows(results)
     print(f"Wrote {len(results)} decisions to {output_path}")
+    usage = gemini.USAGE.as_dict()
+    print(f"Gemini ({usage['model']}): {usage['calls']} calls, {usage['cache_hits']} cache hits, "
+          f"{usage['input_tokens']} input + {usage['output_tokens']} output tokens")
     return output_path
 
 

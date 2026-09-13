@@ -1535,3 +1535,24 @@ branch=bulk-agent
 repo_root=/Users/roshan/hackaton/hackerrank-orchestrate-september26
 worktree=main
 parent_agent=none
+
+## [2026-09-13T14:30:00+05:30] Remove leaked .env from branch; add Gemini classification
+
+User Prompt (verbatim, secrets redacted):
+i want you to use GEMINI_API_KEY for our classification and places where can use it to make our processing easy
+
+Agent Response Summary:
+An untracked .env containing GEMINI_API_KEY had been swept into the bulk-agent commit and pushed. Removed it from the commit, gitignored .env, and force-pushed only that branch; advised rotating the key. Added engine/gemini.py (stdlib REST client, JSON-schema output, disk cache, token accounting; key read from env/.env and never logged). Gemini is a fallback for messages no phrase rule recognises and for images not in the SHA-256 reviewed cache (before OCR). Added evaluation/gemini_crosscheck.py (evaluation/main.py --gemini). The key's free tier allows ~20 requests/day on gemini-3.8-flash, so the default is gemini-3.1-flash-lite and messages are batched 25 per call. Cross-check: 25 calls, 38,081 input + 12,006 output tokens; messages 213/215 and images 15/16 agree. It exposed a rule-order bug (message_92 settled investment sale matched "masih tertunda"), now fixed, so messages agree 214/215. output.csv is unchanged, with 0 runtime Gemini calls on this dataset. The usage report and README were updated.
+
+Actions:
+* git rm --cached .env; commit --amend; push --force-with-lease personal bulk-agent
+* Added code/engine/gemini.py, code/evaluation/gemini_crosscheck.py, engine/cache/gemini/*, evaluation/gemini_crosscheck.json
+* Edited code/engine/facts.py, images.py, data.py, code/main.py, code/evaluation/main.py, usage_report.md, code/README.md
+* Ran live Gemini smoke test, cross-check, evaluation/main.py --gemini
+
+Context:
+tool=Claude Code
+branch=bulk-agent
+repo_root=/Users/roshan/hackaton/hackerrank-orchestrate-september26
+worktree=main
+parent_agent=none

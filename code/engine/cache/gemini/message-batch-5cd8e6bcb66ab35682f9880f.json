@@ -1,0 +1,194 @@
+{
+  "task": "message-batch",
+  "model": "gemini-3.1-flash-lite",
+  "result": [
+    {
+      "index": 0,
+      "kind": "invoice_approved",
+      "amount": "1419",
+      "currency": "EUR",
+      "effective_date": "2026-04-15"
+    },
+    {
+      "index": 1,
+      "kind": "temporary_pay",
+      "amount": "164880",
+      "currency": "INR",
+      "effective_date": null
+    },
+    {
+      "index": 2,
+      "kind": "base_salary_only",
+      "amount": "35860",
+      "currency": "ZAR",
+      "effective_date": null
+    },
+    {
+      "index": 3,
+      "kind": "unrealized_value",
+      "amount": null,
+      "currency": null,
+      "effective_date": null
+    },
+    {
+      "index": 4,
+      "kind": "first_salary",
+      "amount": "1815",
+      "currency": "EUR",
+      "effective_date": "2024-12-15"
+    },
+    {
+      "index": 5,
+      "kind": "first_salary",
+      "amount": "2123",
+      "currency": "EUR",
+      "effective_date": "2025-05-15"
+    },
+    {
+      "index": 6,
+      "kind": "base_salary_only",
+      "amount": "33440",
+      "currency": "ZAR",
+      "effective_date": null
+    },
+    {
+      "index": 7,
+      "kind": "invoice_approved",
+      "amount": "16720",
+      "currency": "ZAR",
+      "effective_date": "2025-08-15"
+    },
+    {
+      "index": 8,
+      "kind": "employment_ended",
+      "amount": null,
+      "currency": null,
+      "effective_date": null
+    },
+    {
+      "index": 9,
+      "kind": "first_salary",
+      "amount": "627",
+      "currency": "EUR",
+      "effective_date": "2024-06-15"
+    },
+    {
+      "index": 10,
+      "kind": "foreign_salary_confirmed",
+      "amount": "1296",
+      "currency": "USD",
+      "effective_date": "2026-09-15"
+    },
+    {
+      "index": 11,
+      "kind": "next_salary_reduced",
+      "amount": "148200",
+      "currency": "INR",
+      "effective_date": null
+    },
+    {
+      "index": 12,
+      "kind": "prize_received",
+      "amount": null,
+      "currency": null,
+      "effective_date": null
+    },
+    {
+      "index": 13,
+      "kind": "salary_increase",
+      "amount": "1188",
+      "currency": "EUR",
+      "effective_date": "2026-07-15"
+    },
+    {
+      "index": 14,
+      "kind": "regular_salary_with_arrears",
+      "amount": "759",
+      "currency": "EUR",
+      "effective_date": null,
+      "second_amount": "341.55"
+    },
+    {
+      "index": 15,
+      "kind": "salary_resumes",
+      "amount": "176000",
+      "currency": "INR",
+      "effective_date": "2025-05-15"
+    },
+    {
+      "index": 16,
+      "kind": "investment_sale_settled",
+      "amount": null,
+      "currency": null,
+      "effective_date": null
+    },
+    {
+      "index": 17,
+      "kind": "invoice_approved",
+      "amount": "15390000",
+      "currency": "IDR",
+      "effective_date": "2025-08-15"
+    },
+    {
+      "index": 18,
+      "kind": "gig_payout_pending",
+      "amount": null,
+      "currency": null,
+      "effective_date": null
+    },
+    {
+      "index": 19,
+      "kind": "foreign_salary_confirmed",
+      "amount": "748",
+      "currency": "EUR",
+      "effective_date": "2025-11-15"
+    },
+    {
+      "index": 20,
+      "kind": "invoice_approved",
+      "amount": "152000",
+      "currency": "INR",
+      "effective_date": "2026-07-15"
+    },
+    {
+      "index": 21,
+      "kind": "salary_resumes",
+      "amount": "50160",
+      "currency": "ZAR",
+      "effective_date": "2024-09-15"
+    },
+    {
+      "index": 22,
+      "kind": "bonus_pending",
+      "amount": null,
+      "currency": null,
+      "effective_date": null
+    },
+    {
+      "index": 23,
+      "kind": "prize_received",
+      "amount": null,
+      "currency": null,
+      "effective_date": null
+    },
+    {
+      "index": 24,
+      "kind": "temporary_pay",
+      "amount": "2177.28",
+      "currency": "USD",
+      "effective_date": null
+    }
+  ],
+  "usage": {
+    "promptTokenCount": 2323,
+    "candidatesTokenCount": 1452,
+    "totalTokenCount": 3775,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2323
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

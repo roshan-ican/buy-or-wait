@@ -1,0 +1,24 @@
+{
+  "task": "image",
+  "model": "gemini-3.1-flash-lite",
+  "result": {
+    "amount": "4365000",
+    "label": "Net Pay"
+  },
+  "usage": {
+    "promptTokenCount": 1166,
+    "candidatesTokenCount": 19,
+    "totalTokenCount": 1185,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 86
+      },
+      {
+        "modality": "IMAGE",
+        "tokenCount": 1080
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}
