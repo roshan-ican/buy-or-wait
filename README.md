@@ -41,6 +41,13 @@ Run the starter Python entry point with:
 python3 code/main.py
 ```
 
+Run the optional local API used by the Expo web bulk-analysis flow with:
+
+```bash
+python3 -m pip install -r code/requirements.txt
+python3 -m uvicorn server:app --app-dir code --host 127.0.0.1 --port 8000
+```
+
 After running your solution, confirm that `output.csv` exists in the repository root and contains the required columns and one row for every request.
 
 ## Important File Locations
