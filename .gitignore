@@ -3,4 +3,5 @@ log.txt
 code/engine/ocr/ocr
 __pycache__/
 .DS_Store
-code/app/
+.env
+.env.*

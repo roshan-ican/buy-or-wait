@@ -1515,3 +1515,23 @@ branch=bulk-agent
 repo_root=/Users/roshan/hackaton/hackerrank-orchestrate-september26
 worktree=main
 parent_agent=none
+
+## [2026-09-13T13:50:00+05:30] bulk-agent: keep only evaluation code, remove Expo leftovers
+
+User Prompt (verbatim, secrets redacted):
+and like just the evaltion code keep and also like also remove expo and all
+
+Agent Response Summary:
+On bulk-agent, kept only the evaluation pipeline (code/main.py, code/engine, code/evaluation). Removed the FastAPI server, requirements.txt, the planning docs (they described the React Native app), and the now-unused short_reason helper. Deleted the untracked Expo leftovers on disk (code/app/.expo and node_modules, 379 MB; npm install recreates them on main). Rewrote code/README.md for this layout and removed the API block from the root README. Verified output.csv is unchanged: 0 violations, samples 23/24/23/22/22.
+
+Actions:
+* git rm code/server.py code/requirements.txt code/docs/planning/*; edited code/engine/planner.py, code/README.md, README.md, .gitignore
+* rm -rf code/app (untracked .expo/node_modules)
+* Ran evaluation/main.py; committed and pushed bulk-agent
+
+Context:
+tool=Claude Code
+branch=bulk-agent
+repo_root=/Users/roshan/hackaton/hackerrank-orchestrate-september26
+worktree=main
+parent_agent=none

@@ -11,69 +11,27 @@ python3 code/evaluation/validate_output.py     # checks every hard rule in probl
 python3 code/evaluation/score_samples.py --verbose   # accuracy vs the public labels in sample_requests.csv
 ```
 
-Python 3.9+, standard library only for the engine. The API (`code/server.py`) additionally needs
-`pip install -r code/requirements.txt` and runs with
-`python3 -m uvicorn server:app --app-dir code --host 127.0.0.1 --port 8000`.
-No API keys are needed.
+Python 3.9+, standard library only. No dependencies to install and no API keys.
 
 ## Branch: bulk-agent
 
-This branch contains only the bulk-processing agent: the decision engine, the terminal batch runner, the queued bulk
-API and the evaluation workflow. The React Native app and the single-request endpoint are on `main`.
-
-Walkthrough of bulk mode (upload `requests.csv` → queue → results → `output.csv`):
-https://drive.google.com/file/d/1Ljn_cQ8_aPV7vxi02PmqUFL1njeSYVv5/view?usp=sharing
-
-## Architecture
-
-The original whiteboard is in `docs/planning/buy_or_wait_flow.excalidraw`, summarised in `docs/planning/README.md`.
+This branch keeps only the evaluation pipeline, the agent that processes every request in bulk:
 
 ```text
-  requests.csv
-       │
-       ├──────────────────────────────┐
-       ▼                              ▼
-  python3 code/main.py          FastAPI (code/server.py)
-  (terminal batch runner)       POST /api/v1/analysis/upload → start
-       │                              │
-       │                              ▼
-       │                        Job queue (asyncio.Queue)
-       │                              │
-       │                              ▼
-       │                        Background worker (one row at a time)
-       │                              │
-       └──────────────┬───────────────┘
-                      ▼
-          Decision engine (code/engine)
-          DecisionEngine.evaluate_row
-                      │
-                      ▼
-                  output.csv
+dataset/requests.csv ─► code/main.py ─► DecisionEngine.evaluate_row (code/engine), one row at a time ─► output.csv
+                                                                                                          │
+                              code/evaluation/validate_output.py  ◄── hard rules from problem_statement.md ┤
+                              code/evaluation/score_samples.py    ◄── accuracy vs sample_requests.csv ──────┘
 ```
 
-### Terminal batch runner
+| Path | Purpose |
+|---|---|
+| `code/main.py` | Evaluates every request in `dataset/requests.csv` and writes `output.csv` at the repo root |
+| `code/engine/` | The decision engine: evidence (`facts.py`, `images.py`), `forecast.py`, `planner.py`, `evaluator.py` |
+| `code/evaluation/main.py` | One-command workflow: run, validate, score |
+| `code/evaluation/usage_report.md` | Token usage for the final run (0 model calls) |
 
-`python3 code/main.py` evaluates every request in `dataset/requests.csv` and writes `output.csv` at the repo root.
-That is how the submitted `output.csv` is produced.
-
-### Bulk API
-
-When a CSV is uploaded, the server checks its columns and creates a job. It then puts the job on a queue and
-returns right away. A background worker evaluates each row with the same engine and records progress: queued,
-completed and failed rows. A row that fails is reported and does not stop the job. The API gives identical rows to
-`main.py`.
-
-```bash
-curl -F file=@dataset/requests.csv http://127.0.0.1:8000/api/v1/analysis/upload     # -> {"id": "job_…", …}
-curl -X POST http://127.0.0.1:8000/api/v1/analysis/start/<job_id>
-curl http://127.0.0.1:8000/api/v1/analysis/status/<job_id>                          # progress counts
-curl http://127.0.0.1:8000/api/v1/analysis/results/<job_id>                         # rows + one-line reason + summary
-curl -o output.csv http://127.0.0.1:8000/api/v1/analysis/download/<job_id>
-```
-
-The queue only decides *when* rows run; it contains no affordability logic. Every decision comes from
-`DecisionEngine.evaluate_row`, which reads profiles, events, exchange rates, payment options, messages and images
-from `dataset/`.
+The React Native app, the API server and the planning docs are on the `main` branch.
 
 ## How a decision is made
 
@@ -93,7 +51,6 @@ from `dataset/`.
    earliest start, fewest payments, lowest option id). If nothing is safe, try up to three stop/reduce changes on
    non-protected flexible expenses the user allows, choosing the smallest total cut.
 4. **Explanation**: one short sentence of the recommendation plus the protected minimum, in the style of the samples.
-   The bulk results endpoint also returns a one-line `reason` (OK / OK with a plan / better wait / not OK).
 
 ## Calibration and known limits
 
