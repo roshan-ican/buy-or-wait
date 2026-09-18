@@ -1,6 +1,6 @@
 # Buy or Wait — App UI
 
-A web-first React Native (Expo + TypeScript) implementation of **Buy or Wait**. The bulk-analysis flow connects to the local FastAPI service in `code/server.py`, persists the active job in browser `localStorage`, displays live row-by-row progress, and downloads a real `output.csv`. Other product flows still use design mock data while the shared financial engine is expanded.
+A web-first React Native (Expo + TypeScript) implementation of **Buy or Wait**. The purchase flow runs a deterministic buy now / use a plan / wait check entirely in the app (`src/data/decide.ts`); other request types use design mock data.
 
 Renders identically across iOS, Android, and web. On any viewport wider than ~560px (desktop/tablet browser) the app centers itself inside a fixed phone-width frame so the experience matches the mobile design exactly instead of stretching into a "responsive website" layout.
 
@@ -20,14 +20,13 @@ npm install
 ## Run
 
 ```bash
-npm run api       # from code/app: starts FastAPI on http://127.0.0.1:8000
 npm run web       # opens in the browser at http://localhost:8081 (or --port override)
 npm run ios       # requires Xcode / iOS Simulator on macOS
 npm run android   # requires an Android emulator or connected device
 npm start         # Expo Dev Tools — scan the QR code with Expo Go
 ```
 
-Run the API and web commands in separate terminals. Override the browser's API address with `EXPO_PUBLIC_API_URL` when needed.
+The purchase decision runs entirely in the app (`src/data/decide.ts`); no server is needed.
 
 ## Project structure
 
@@ -43,7 +42,7 @@ src/
   data/
     types.ts        Shapes mirroring what a real decision engine would return
     mockData.ts     Static values taken from the design's worked example (12,000 AED salary profile)
-    repositories/   Profile and history mocks plus a real API-backed BulkAnalysisRepository
+    repositories/   Profile mocks and the single-purchase decision repository
   hooks/            useAsync — minimal data-loading hook so screens read repositories the way they'd read a real API
   navigation/       React Navigation setup: RootNavigator (native-stack) + MainTabNavigator (bottom-tabs), typed route params, web deep-linking
   features/         One folder per flow, each with a screens/ subfolder:
@@ -54,7 +53,6 @@ src/
     profile/        Not in the original mockups (only the nav icon was) — minimal read-only profile summary so the tab has a destination
     purchase/       C1–C6 — Item, Want/need, Payment options, Analysing, Recommendation, What-if
     familyTransfer/ investment/ debt/ travel/ housing/ education/ emergency/ other/   — Group D, the other eight request types
-    bulkAnalysis/   E1–E10 — CSV/XLSX upload, structure check, issues, preview, progress, summary, results table (+ row-detail sheet), download
     decisions/      E11 — Decisions history tab
 ```
 

@@ -24,7 +24,6 @@ export const linking: LinkingOptions<RootStackParamList> = {
         },
       },
       RequestType: 'decide',
-      EntryChoice: 'decide/choose',
 
       PurchaseItem: 'purchase/item',
       PurchaseWantOrNeed: 'purchase/want-or-need',
@@ -44,14 +43,6 @@ export const linking: LinkingOptions<RootStackParamList> = {
       EmergencyResult: 'emergency/result',
       OtherRequest: 'other',
 
-      BulkUpload: 'bulk/upload',
-      BulkStructureCheck: 'bulk/structure-check',
-      BulkIssues: 'bulk/issues',
-      BulkPreview: 'bulk/preview',
-      BulkProgress: 'bulk/progress',
-      BulkSummary: 'bulk/summary',
-      BulkResultsTable: 'bulk/results',
-      BulkDownload: 'bulk/download',
     },
   },
 };

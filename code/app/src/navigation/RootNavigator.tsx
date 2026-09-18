@@ -9,7 +9,6 @@ import { ExpensesScreen } from '../features/onboarding/screens/ExpensesScreen';
 import { SafetyNetScreen } from '../features/onboarding/screens/SafetyNetScreen';
 
 import { RequestTypeScreen } from '../features/decisionType/screens/RequestTypeScreen';
-import { EntryChoiceScreen } from '../features/bulkAnalysis/screens/EntryChoiceScreen';
 
 import { ItemScreen } from '../features/purchase/screens/ItemScreen';
 import { WantOrNeedScreen } from '../features/purchase/screens/WantOrNeedScreen';
@@ -29,14 +28,6 @@ import { EmergencyScreen } from '../features/emergency/screens/EmergencyScreen';
 import { EmergencyResultScreen } from '../features/emergency/screens/EmergencyResultScreen';
 import { OtherRequestScreen } from '../features/other/screens/OtherRequestScreen';
 
-import { UploadScreen } from '../features/bulkAnalysis/screens/UploadScreen';
-import { StructureCheckScreen } from '../features/bulkAnalysis/screens/StructureCheckScreen';
-import { IssuesScreen } from '../features/bulkAnalysis/screens/IssuesScreen';
-import { PreviewScreen } from '../features/bulkAnalysis/screens/PreviewScreen';
-import { ProgressScreen } from '../features/bulkAnalysis/screens/ProgressScreen';
-import { SummaryScreen } from '../features/bulkAnalysis/screens/SummaryScreen';
-import { ResultsTableScreen } from '../features/bulkAnalysis/screens/ResultsTableScreen';
-import { DownloadScreen } from '../features/bulkAnalysis/screens/DownloadScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -50,7 +41,6 @@ export function RootNavigator() {
 
       <Stack.Screen name="Main" component={MainTabNavigator} />
       <Stack.Screen name="RequestType" component={RequestTypeScreen} />
-      <Stack.Screen name="EntryChoice" component={EntryChoiceScreen} />
 
       <Stack.Screen name="PurchaseItem" component={ItemScreen} />
       <Stack.Screen name="PurchaseWantOrNeed" component={WantOrNeedScreen} />
@@ -70,14 +60,6 @@ export function RootNavigator() {
       <Stack.Screen name="EmergencyResult" component={EmergencyResultScreen} />
       <Stack.Screen name="OtherRequest" component={OtherRequestScreen} />
 
-      <Stack.Screen name="BulkUpload" component={UploadScreen} />
-      <Stack.Screen name="BulkStructureCheck" component={StructureCheckScreen} />
-      <Stack.Screen name="BulkIssues" component={IssuesScreen} />
-      <Stack.Screen name="BulkPreview" component={PreviewScreen} />
-      <Stack.Screen name="BulkProgress" component={ProgressScreen} />
-      <Stack.Screen name="BulkSummary" component={SummaryScreen} />
-      <Stack.Screen name="BulkResultsTable" component={ResultsTableScreen} />
-      <Stack.Screen name="BulkDownload" component={DownloadScreen} />
     </Stack.Navigator>
   );
 }

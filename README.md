@@ -35,17 +35,10 @@ Your solution must:
 - Generate one prediction for every request
 - Write the final predictions to `output.csv` in the repository root
 
-Run the starter Python entry point with:
+The solution is an Expo + TypeScript app. Run it with:
 
 ```bash
-python3 code/main.py
-```
-
-Run the optional local API used by the Expo web bulk-analysis flow with:
-
-```bash
-python3 -m pip install -r code/requirements.txt
-python3 -m uvicorn server:app --app-dir code --host 127.0.0.1 --port 8000
+cd code/app && npm install && npm run web
 ```
 
 After running your solution, confirm that `output.csv` exists in the repository root and contains the required columns and one row for every request.

@@ -1,5 +1,3 @@
-import { ApiBulkAnalysisRepository } from './BulkAnalysisRepository';
-import { LocalDecisionHistoryRepository } from './DecisionHistoryRepository';
 import { LocalProfileRepository } from './ProfileRepository';
 import { SingleDecisionRepository } from './SingleDecisionRepository';
 
@@ -10,12 +8,8 @@ import { SingleDecisionRepository } from './SingleDecisionRepository';
  */
 export const repositories = {
   profile: new LocalProfileRepository(),
-  bulkAnalysis: new ApiBulkAnalysisRepository(),
-  decisionHistory: new LocalDecisionHistoryRepository(),
   singleDecision: new SingleDecisionRepository(),
 };
 
 export * from './ProfileRepository';
-export * from './BulkAnalysisRepository';
-export * from './DecisionHistoryRepository';
 export * from './SingleDecisionRepository';

@@ -2,7 +2,6 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Screen } from '../../../components/layout/Screen';
 import { Card } from '../../../components/ui/Card';
-import { IconGlyph } from '../../../components/ui/IconGlyph';
 import { SegmentBar } from '../../../components/ui/ProgressBar';
 import { colors, fontFamily, spacing } from '../../../theme';
 import { useAsync } from '../../../hooks/useAsync';
@@ -48,19 +47,11 @@ export function HomeScreen({ navigation }: MainTabScreenProps<'Home'>) {
 
       <Card tone="neutral" style={styles.ctaCard as any}>
         <Text style={styles.ctaTitle}>Thinking about{'\n'}spending money?</Text>
-        <Pressable style={styles.ctaButton} onPress={() => navigation.navigate('EntryChoice')}>
+        <Pressable style={styles.ctaButton} onPress={() => navigation.navigate('RequestType')}>
           <Text style={styles.ctaButtonLabel}>Ask about a decision</Text>
         </Pressable>
       </Card>
 
-      <Pressable style={styles.fileRow} onPress={() => navigation.navigate('BulkUpload')}>
-        <IconGlyph glyph="▤" size={17} color={colors.accent} circleSize={38} circleColor={colors.accentTint} />
-        <View style={styles.fileTextCol}>
-          <Text style={styles.fileTitle}>Analyse a file</Text>
-          <Text style={styles.fileSubtitle}>Many decisions at once · CSV or XLSX</Text>
-        </View>
-        <Text style={styles.chevron}>›</Text>
-      </Pressable>
 
       <Text style={styles.recentLabel}>RECENT</Text>
       {snapshot.recentDecisions.length === 0 ? (
@@ -108,20 +99,6 @@ const styles = StyleSheet.create({
   ctaTitle: { fontFamily: fontFamily.serif, fontSize: 26, lineHeight: 30, color: colors.textInverse, marginBottom: 16 },
   ctaButton: { backgroundColor: colors.surface, borderRadius: 14, height: 50, alignItems: 'center', justifyContent: 'center' },
   ctaButtonLabel: { fontFamily: fontFamily.sansSemiBold, fontSize: 16, color: colors.navy },
-  fileRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.borderDashed,
-    borderRadius: 18,
-    padding: spacing.mdl,
-    marginBottom: 28,
-  },
-  fileTextCol: { flex: 1 },
-  fileTitle: { fontFamily: fontFamily.sansSemiBold, fontSize: 16, color: colors.textPrimary },
-  fileSubtitle: { fontFamily: fontFamily.sans, fontSize: 13, color: colors.textTertiary },
-  chevron: { color: colors.textTertiary, fontSize: 18 },
   recentLabel: { fontFamily: fontFamily.sans, fontSize: 13, letterSpacing: 0.6, color: colors.textTertiary, marginBottom: 12 },
   recentRow: {
     borderWidth: 1,

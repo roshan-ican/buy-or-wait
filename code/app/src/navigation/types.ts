@@ -19,7 +19,6 @@ export type RootStackParamList = {
   // Core (Group B)
   Main: NavigatorScreenParams<MainTabParamList> | undefined;
   RequestType: undefined;
-  EntryChoice: undefined;
 
   // Purchase flow (Group C)
   PurchaseItem: undefined;
@@ -41,15 +40,6 @@ export type RootStackParamList = {
   EmergencyResult: undefined;
   OtherRequest: undefined;
 
-  // Bulk file analysis (Group E)
-  BulkUpload: undefined;
-  BulkStructureCheck: undefined;
-  BulkIssues: undefined;
-  BulkPreview: undefined;
-  BulkProgress: undefined;
-  BulkSummary: undefined;
-  BulkResultsTable: undefined;
-  BulkDownload: undefined;
 };
 
 export type RootScreenProps<T extends keyof RootStackParamList> = NativeStackScreenProps<RootStackParamList, T>;

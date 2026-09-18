@@ -26,7 +26,6 @@
     "typescript": "~6.0.3"
   },
   "scripts": {
-    "api": "python3 -m uvicorn server:app --app-dir .. --host 127.0.0.1 --port 8000",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
