@@ -1,8 +1,7 @@
 /**
- * UI-only data contracts. These mirror the shapes the real "Buy or Wait"
- * decision engine (see /code/main.py) would eventually return, so wiring a
- * real backend later means swapping a repository implementation, not the
- * screens.
+ * UI-only data contracts. These mirror the shapes a real "Buy or Wait"
+ * decision engine would return, so wiring a real backend later means
+ * swapping a repository implementation, not the screens.
  */
 
 export interface ExpenseItem {

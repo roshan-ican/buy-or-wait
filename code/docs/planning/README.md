@@ -45,10 +45,9 @@ React Native app → Server ─┬─ single request → evaluate now
                            └─ upload CSV → background analyzer → analyse each row one by one with the same flow
 ```
 
-## How it became the submission
+## How it maps to the app today
 
-The monthly model is what the app's interactive mode still uses (`POST /api/v1/decision/evaluate`).
-For the challenge, the "background analyzer" became the queued batch mode. The monthly arithmetic grew into the
-dated cash-flow forecast in `code/engine`. It covers recurring events, pending and scheduled items, exchange
-rates, messages and images, payment options, the minimum balance, spending changes and the earliest safe date.
-See `code/README.md` → Architecture.
+The monthly model is what the purchase flow still uses: `code/app/src/data/decide.ts` implements the
+surplus / safe-now / shortest-fitting-plan arithmetic above, and the screens read it through
+`src/data/repositories`. The "server" and "background analyzer" boxes were never built — everything
+runs in the app.
